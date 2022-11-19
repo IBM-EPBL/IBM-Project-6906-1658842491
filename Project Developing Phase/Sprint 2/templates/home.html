@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="{{url_for('static', filename='img/logo.png')}}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>News Website</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!--<nav>
+        <a href="/" class="logo"><h2>Spark News</h2></a>
+        <ul class= "menu">
+            <li class="nav-items"><a href='/'>Home</a></li>
+            <li class="nav-items"><a href='/'>News</a></li>
+            <li class="nav-items"><a href='register.html'>Register</a></li>
+            <li class="nav-items"><a href='login.html'>Login</a></li>
+        </ul>
+        </nav>
+    //-->
+    <div class="header sticky-top">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img
+                    src="https://yt3.ggpht.com/Vk6U2tYdurPF3jcSyMFnCmjvO5Ck-gh7ubYnFnrsymteOQCDJ_p_JEHXm5FX0JHYN6uCq7Ul=s900-c-k-c0x00ffffff-no-rj" />
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+            <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
+                <ul class="navbar-nav">
+                    <div class="flexNav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
+                                <i class="fas fa-user"></i>Signup
+                            </a>
+                        </li>
+                        <div class="nav-vl"></div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">
+                                <i class="fas fa-sign-in-alt"></i>Login
+                            </a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div id="loading">
+    </div>
+
+    <div class="banner-container">
+
+        <form id="search-form">
+            <div class="input-group city-search">
+                <input type="text" class="form-control input-city" id='city' name='city'
+                    placeholder="Enter the news category you need" />
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-heading"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signup-heading">Signup with Spark News </h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+
+                <div class="modal-body flex">
+                    <form id="signup-form" class="form" role="form">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="x`_name" placeholder="Full Name"
+                                maxlength="30" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-phone-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="phone" placeholder="Phone Number"
+                                maxlength="10" minlength="10" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" name="password" placeholder="Password"
+                                minlength="6" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" name="City_name" placeholder="City Name"
+                                maxlength="150" required>
+                        </div>
+
+                        <div class="form-group">
+                            <span>I'm a</span>
+                            <input type="radio" class="ml-3" id="gender-male" name="gender" value="male" /> Male
+                            <label for="gender-male">
+                            </label>
+                            <input type="radio" class="ml-3" id="gender-female" name="gender" value="female" />
+                            <label for="gender-female">
+                                Female
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block btn-primary">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+                `
+                <div class="modal-footer">
+
+                    <input type="text" id="fname" name="fname",placeholder="Search news"><br><br>
+                    <input type="submit" value="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-heading"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="login-heading">Login with Spark News </h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+
+                <div class="modal-body">
+                    <form id="login-form" class="form" role="form">
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" name="password" placeholder="Password"
+                                minlength="6" required>
+                        </div>
+
+                        <div class="form-group">
+
+                            <!--<button type="button" class="btn btn-secondary" data-bs-toggle="popover"
+                                data-bs-placement="right" data-bs-custom-class="custom-popover" data-bs-title="Login"
+                                data-bs-content="You have successfully logged in">
+                                Login
+                            </button>
+                        -->
+                            <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Success!" data-bs-content="You have Logged in">Click to Login</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <span>
+                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal">Click here</a>
+                        to register a new account
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="main">
+        <div class="banner"><img
+                src="https://t4.ftcdn.net/jpg/03/37/92/49/360_F_337924964_fF6I0iZkv9lvoIEn71f0OsgawArIPPDu.jpg">
+        </div>
+        <div class="head">TODAY'S TOP HEADLINES</div>
+        {% for title,desc,img,p_date,url in contents %}
+        <div class="wrapper">
+            <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+            <div class="c-box">
+                <div class="content"><a href="{{url}}">
+                        <h2>{{title}}</h2>
+                    </a></div>
+                <div class="content"><a href="{{url}}">
+                        <p>{{desc}}</p>
+                    </a></div>
+                <div class="content">
+                    <p style="color:rgb(77, 255, 0);">Publish Date:- </p>
+                    <p>{{p_date}}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div class="head">TODAY'S NEWS</div>
+        {% for title,desc,img,p_date,url in all %}
+        <div class="wrapper">
+            <div class="item"><a href="{{url}}"><img src="{{img}}"></a></div>
+            <div class="c-box">
+                <div class="content"><a href="{{url}}">
+                        <h2>{{title}}</h2>
+                    </a></div>
+                <div class="content">
+                    <p>{{desc}}</p>
+                </div>
+                <div class="content">
+                    <p style="color:rgb(77, 255, 0);">Publish Date:- </p>
+                    <p> {{p_date}} </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+</body>
+
+</html>
+<script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "7fc1e5ba-ffcd-42be-8d33-879a3e0dbcc9", // The ID of this integration.
+      region: "jp-tok", // The region your integration is hosted in.
+      serviceInstanceID: "19bdae9f-0d89-4db4-8599-cc67fe84c5ec", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+  });
+  </script>
